@@ -1,5 +1,6 @@
 /// <reference types="cypress" />
 import { faker } from '@faker-js/faker';
+import { verificarSeCadastroFoiEfetuadoComSucesso } from '../../support/helpers/cadastro-usuario';
 
 
 describe('Automation Exercise', () =>{
@@ -63,7 +64,7 @@ describe('Automation Exercise', () =>{
        cy.get('[data-qa="create-account"]').click();
 
        //assert de sucesso
-       cy.get('[data-qa="account-created"]').should('be.visible').and('contain.text', 'Account Created!');
+       verificarSeCadastroFoiEfetuadoComSucesso();
 
     });
 

@@ -1,6 +1,12 @@
 /// <reference types="cypress" />
+import {
+    loginUsuario,
+    verificarSeFormularioDeLoginEstaVisivel,
+    verificarSeEstaNaPaginaDeLogin,
+    verificarSeLinkDeLogoutNaoExiste,
+} from '../../support/helpers/login-usuario';
+import { verificarSePaginaInicialEstaVisivel } from '../../support/helpers/pagina-inicial';
 import { faker } from '@faker-js/faker';
-import { loginUsuario } from '../../support/helpers/login-usuario';
 
 describe('Automation Exercise - Test Case 3', () => {
     it('Rejeitar login com email e senha incorretos', () => {
@@ -11,19 +17,17 @@ describe('Automation Exercise - Test Case 3', () => {
         };
 
         cy.visit('/');
-        cy.get('#slider').should('be.visible');
+        verificarSePaginaInicialEstaVisivel();
 
         cy.get('a[href="/login"]').click();
-        cy.get('.login-form h2')
-            .should('be.visible')
-            .and('have.text', 'Login to your account');
+        verificarSeFormularioDeLoginEstaVisivel();
 
         loginUsuario(usuario);
 
         cy.get('.login-form form p')
             .should('be.visible')
             .and('have.text', 'Your email or password is incorrect!');
-        cy.location('pathname').should('eq', '/login');
-        cy.get('a[href="/logout"]').should('not.exist');
+        verificarSeEstaNaPaginaDeLogin();
+        verificarSeLinkDeLogoutNaoExiste();
     });
 });

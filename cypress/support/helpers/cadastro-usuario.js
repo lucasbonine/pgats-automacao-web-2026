@@ -1,5 +1,12 @@
 /// <reference types="cypress" />
 
+//verifica se está na página de conta criada
+export function verificarSeCadastroFoiEfetuadoComSucesso() {
+    return cy.get('[data-qa="account-created"]')
+        .should('be.visible')
+        .and('contain.text', 'Account Created!');
+}
+
 /**
  * Cadastra o usuário pela interface e termina na página de confirmação.
  * Recebe os dados do teste e retorna a cadeia Cypress para permitir encadeamento.

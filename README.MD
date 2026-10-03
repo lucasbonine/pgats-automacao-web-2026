@@ -54,11 +54,11 @@ O script `npm test` ainda não está configurado para executar o Cypress. Utiliz
 
 ## Testes existentes
 
-O projeto contém cinco cenários. Todos acessam a URL definida no `.env` por meio de `cy.visit('/')` e usam seletores CSS com `cy.get()` para localizar os elementos. As validações de texto e visibilidade ficam nos testes.
+O projeto contém cinco cenários. Todos acessam a URL definida no `.env` por meio de `cy.visit('/')` e usam seletores CSS com `cy.get()` para localizar os elementos. As verificações repetidas ficam nos helpers e são chamadas explicitamente pelos testes; as validações específicas permanecem nos cenários.
 
 | Cenário | Preparação dos dados | Helpers utilizados | Resultado esperado |
 | --- | --- | --- | --- |
-| Cadastro — Aula | Dados gerados diretamente com Faker. | Cadastro escrito no próprio teste. | Conta criada com sucesso. |
+| Cadastro — Aula | Dados gerados diretamente com Faker. | Cadastro no próprio teste e confirmação pelo helper. | Conta criada com sucesso. |
 | Caso 2 — Login correto | Novo usuário gerado pela factory `criarUsuario()` no `beforeEach`. | `cadastrarUsuario` e `loginUsuario`. | Login realizado e conta excluída. |
 | Caso 3 — Login incorreto | E-mail com UUID e senha gerados com Faker, sem cadastro. | `loginUsuario`. | Mensagem de erro e permanência na página de login. |
 | Caso 4 — Logout | Novo usuário gerado pela factory `criarUsuario()` no `beforeEach`. | `cadastrarUsuario` e `loginUsuario`. | Sessão encerrada e retorno à página de login. |
@@ -200,15 +200,17 @@ cypress/
     │   └── usuario.js
     ├── helpers/
     │   ├── cadastro-usuario.js
-    │   └── login-usuario.js
+    │   ├── login-usuario.js
+    │   └── pagina-inicial.js
     ├── commands.js
     └── e2e.js
 cypress.config.js
 package.json
 ```
 
-- `cadastro-usuario.js`: helper que recebe os dados do usuário, acessa a URL configurada no Cypress, preenche o cadastro pela interface e envia o formulário. As validações e o logout ficam no teste que o utiliza.
-- `login-usuario.js`: helper que recebe e-mail e senha no objeto `usuario`, preenche e envia o formulário de login já aberto. A navegação e as validações ficam no teste.
+- `cadastro-usuario.js`: reúne `cadastrarUsuario`, que preenche e envia o cadastro pela interface, e `verificarSeCadastroFoiEfetuadoComSucesso`, que verifica a visibilidade e o texto `Account Created!`. O teste da aula e os casos 2, 4 e 5 chamam a verificação explicitamente. A navegação após a confirmação e o logout ficam nos testes.
+- `login-usuario.js`: reúne `loginUsuario` e as verificações `verificarSeFormularioDeLoginEstaVisivel`, `verificarSeUsuarioEstaLogado(usuario)`, `verificarSeEstaNaPaginaDeLogin` (caminho `/login`) e `verificarSeLinkDeLogoutNaoExiste`. Cada verificação retorna a cadeia Cypress e é chamada separadamente pelo teste.
+- `pagina-inicial.js`: contém `verificarSePaginaInicialEstaVisivel`, que verifica a visibilidade de `#slider`.
 - `commands.js`: arquivo reservado para comandos personalizados; atualmente contém apenas exemplos comentados.
 - `e2e.js`: arquivo de suporte carregado antes dos testes; importa `commands.js`.
 - `cypress.config.js`: configuração do Cypress, com gravação de vídeo e reexecução automática por alteração de arquivos desativadas.
