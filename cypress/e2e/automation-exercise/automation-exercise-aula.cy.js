@@ -13,7 +13,7 @@ describe('Automation Exercise', () =>{
         cy.get('a[href*=login]').click(); //redirecionamento para página de login
 
 
-       cy.get('[data-qa="signup-name"]').type(`${firstName} ${lastName}`); //entra nome e sobrenome
+       cy.get('[data-qa="signup-name"]').type(firstName); //entra nome
        cy.get('[data-qa="signup-email"]').type(email); //entra email
        cy.get('[data-qa="signup-button"]').click(); //clica em signup
 
