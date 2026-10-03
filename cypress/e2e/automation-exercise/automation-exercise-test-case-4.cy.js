@@ -6,7 +6,7 @@ import {
     verificarSeEstaNaPaginaDeLogin,
     verificarSeLinkDeLogoutNaoExiste,
 } from '../../support/helpers/login-usuario';
-import { verificarSePaginaInicialEstaVisivel } from '../../support/helpers/pagina-inicial';
+import { navegarParaRaizDoSite, verificarSePaginaInicialEstaVisivel } from '../../support/helpers/pagina-inicial';
 import { criarUsuario } from '../../support/factories/usuario';
 import { cadastrarUsuario, verificarSeCadastroFoiEfetuadoComSucesso } from '../../support/helpers/cadastro-usuario';
 
@@ -35,7 +35,7 @@ describe('Automation Exercise - Test Case 4', () => {
     });
 
     it('Realizar logout e retornar à página de login', () => {
-        cy.visit('/');
+        navegarParaRaizDoSite();
         verificarSePaginaInicialEstaVisivel();
 
         //clica no login

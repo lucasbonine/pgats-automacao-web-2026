@@ -210,7 +210,7 @@ package.json
 
 - `cadastro-usuario.js`: reúne `cadastrarUsuario`, que preenche e envia o cadastro pela interface, e `verificarSeCadastroFoiEfetuadoComSucesso`, que verifica a visibilidade e o texto `Account Created!`. O teste da aula e os casos 2, 4 e 5 chamam a verificação explicitamente. A navegação após a confirmação e o logout ficam nos testes.
 - `login-usuario.js`: reúne `loginUsuario` e as verificações `verificarSeFormularioDeLoginEstaVisivel`, `verificarSeUsuarioEstaLogado(usuario)`, `verificarSeEstaNaPaginaDeLogin` (caminho `/login`) e `verificarSeLinkDeLogoutNaoExiste`. Cada verificação retorna a cadeia Cypress e é chamada separadamente pelo teste.
-- `pagina-inicial.js`: contém `verificarSePaginaInicialEstaVisivel`, que verifica a visibilidade de `#slider`.
+- `pagina-inicial.js`: contém `navegarParaRaizDoSite`, que executa `cy.visit('/')` usando a URL configurada no Cypress, e `verificarSePaginaInicialEstaVisivel`, que verifica a visibilidade de `#slider`.
 - `commands.js`: arquivo reservado para comandos personalizados; atualmente contém apenas exemplos comentados.
 - `e2e.js`: arquivo de suporte carregado antes dos testes; importa `commands.js`.
 - `cypress.config.js`: configuração do Cypress, com gravação de vídeo e reexecução automática por alteração de arquivos desativadas.

@@ -5,7 +5,7 @@ import {
     verificarSeEstaNaPaginaDeLogin,
     verificarSeLinkDeLogoutNaoExiste,
 } from '../../support/helpers/login-usuario';
-import { verificarSePaginaInicialEstaVisivel } from '../../support/helpers/pagina-inicial';
+import { navegarParaRaizDoSite, verificarSePaginaInicialEstaVisivel } from '../../support/helpers/pagina-inicial';
 import { faker } from '@faker-js/faker';
 
 describe('Automation Exercise - Test Case 3', () => {
@@ -16,7 +16,7 @@ describe('Automation Exercise - Test Case 3', () => {
             password: faker.internet.password(),
         };
 
-        cy.visit('/');
+        navegarParaRaizDoSite();
         verificarSePaginaInicialEstaVisivel();
 
         cy.get('a[href="/login"]').click();

@@ -4,7 +4,7 @@ import {
     verificarSeFormularioDeLoginEstaVisivel,
     verificarSeUsuarioEstaLogado,
 } from '../../support/helpers/login-usuario';
-import { verificarSePaginaInicialEstaVisivel } from '../../support/helpers/pagina-inicial';
+import { navegarParaRaizDoSite, verificarSePaginaInicialEstaVisivel } from '../../support/helpers/pagina-inicial';
 import { criarUsuario } from '../../support/factories/usuario';
 import { cadastrarUsuario, verificarSeCadastroFoiEfetuadoComSucesso } from '../../support/helpers/cadastro-usuario';
 
@@ -34,7 +34,7 @@ describe('Automation Exercise - Test Case 2', () => {
     });
 
     it('Realizar login com email e senha corretos e excluir a conta', () => {
-        cy.visit('/');
+        navegarParaRaizDoSite();
         verificarSePaginaInicialEstaVisivel();
 
         //clica no login

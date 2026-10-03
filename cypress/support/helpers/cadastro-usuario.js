@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import { navegarParaRaizDoSite } from './pagina-inicial';
 
 //verifica se está na página de conta criada
 export function verificarSeCadastroFoiEfetuadoComSucesso() {
@@ -12,7 +13,7 @@ export function verificarSeCadastroFoiEfetuadoComSucesso() {
  * Recebe os dados do teste e retorna a cadeia Cypress para permitir encadeamento.
  */
 export function cadastrarUsuario(usuario) {
-    cy.visit('/');
+    navegarParaRaizDoSite();
     cy.get('a[href="/login"]').click();
     cy.get('[data-qa="signup-name"]').type(usuario.name);
     cy.get('[data-qa="signup-email"]').type(usuario.email);

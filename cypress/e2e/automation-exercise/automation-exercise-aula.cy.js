@@ -1,4 +1,5 @@
 /// <reference types="cypress" />
+import { navegarParaRaizDoSite } from '../../support/helpers/pagina-inicial';
 import { faker } from '@faker-js/faker';
 import { verificarSeCadastroFoiEfetuadoComSucesso } from '../../support/helpers/cadastro-usuario';
 
@@ -10,7 +11,7 @@ describe('Automation Exercise', () =>{
         const lastName = faker.person.lastName();
         const email = faker.internet.email({ firstName, lastName });
 
-        cy.visit('/');
+        navegarParaRaizDoSite();
         cy.get('a[href*=login]').click(); //redirecionamento para página de login
 
 
