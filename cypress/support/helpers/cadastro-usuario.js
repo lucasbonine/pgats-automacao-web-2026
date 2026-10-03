@@ -4,8 +4,8 @@
  * Cadastra o usuário pela interface e termina na página de confirmação.
  * Recebe os dados do teste e retorna a cadeia Cypress para permitir encadeamento.
  */
-export function cadastrarUsuario(usuario, baseUrl) {
-    cy.visit(`${baseUrl}/`);
+export function cadastrarUsuario(usuario) {
+    cy.visit('/');
     cy.get('a[href="/login"]').click();
     cy.get('[data-qa="signup-name"]').type(usuario.name);
     cy.get('[data-qa="signup-email"]').type(usuario.email);

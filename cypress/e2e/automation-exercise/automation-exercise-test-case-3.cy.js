@@ -10,7 +10,7 @@ describe('Automation Exercise - Test Case 3', () => {
             password: faker.internet.password(),
         };
 
-        cy.visit('https://www.automationexercise.com/');
+        cy.visit('/');
         cy.get('#slider').should('be.visible');
 
         cy.get('a[href="/login"]').click();

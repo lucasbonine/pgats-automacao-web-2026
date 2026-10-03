@@ -9,7 +9,7 @@ describe('Automation Exercise', () =>{
         const lastName = faker.person.lastName();
         const email = faker.internet.email({ firstName, lastName });
 
-        cy.visit('https://www.automationexercise.com/');
+        cy.visit('/');
         cy.get('a[href*=login]').click(); //redirecionamento para página de login
 
 
