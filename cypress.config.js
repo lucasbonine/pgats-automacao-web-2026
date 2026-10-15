@@ -7,6 +7,7 @@ if (!process.env.CYPRESS_BASE_URL) {
 }
 
 module.exports = defineConfig({
+  defaultCommandTimeout: 15000,
   e2e: {
     baseUrl: process.env.CYPRESS_BASE_URL,
     watchForFileChanges: false,
