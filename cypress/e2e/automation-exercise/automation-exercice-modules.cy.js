@@ -1,5 +1,7 @@
 /// <reference types="cypress" />
 
+import { faker } from '@faker-js/faker';
+
 const cadastro = require('../../modules/cadastro/index')
 const login = require('../../modules/login/index')
 
@@ -8,7 +10,7 @@ describe('Automation Exercise', () => {
     it('Cadastrar novo usuário com sucesso', () => {
         cy.visit('https://automationexercise.com/');
         cy.get('a[href*=login]').click();
-        cadastro.iniciarCadastro('PGATS Aut', `pgats-aut-${Date.now()}@email.com`);
+        cadastro.iniciarCadastro('PGATS Aut', faker.internet.email());
         cadastro.preencherCadastro();
         cadastro.verificarSeCadastroFoiEfetuadoComSucesso();
     });
