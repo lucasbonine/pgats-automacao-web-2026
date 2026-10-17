@@ -7,11 +7,15 @@ jobs:
     steps:
       # clone do projeto para a máquina
       - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
       # Conferir a versão instalada
       - name: Node version
         run: node --version
       - name: Instalando dependências
-        run: npm install
+        run: npm ci
       - name: Executando os testes
         run: npx cypress run
       - uses: actions/upload-artifact@v4

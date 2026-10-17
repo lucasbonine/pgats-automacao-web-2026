@@ -8,12 +8,19 @@ if (!process.env.CYPRESS_BASE_URL) {
 
 module.exports = defineConfig({
   defaultCommandTimeout: 15000,
+  reporter: 'cypress-mochawesome-reporter',
+  reporterOptions: {
+    reportDir: 'cypress/reports',
+    reportFilename: 'index',
+    embeddedScreenshots: true,
+    inlineAssets: true,
+  },
   e2e: {
     baseUrl: process.env.CYPRESS_BASE_URL,
     watchForFileChanges: false,
-     video: false,
+    video: false,
     setupNodeEvents(on, config) {
-      // implement node event listeners here
+      require('cypress-mochawesome-reporter/plugin')(on);
     },
   },
 });
