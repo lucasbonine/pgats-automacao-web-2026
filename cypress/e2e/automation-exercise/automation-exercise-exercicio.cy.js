@@ -2,7 +2,7 @@
 
 describe('Automation Exercise - Exercício para casa', () => {
     it('Cenário 8 - Verificar produtos e detalhes do primeiro produto', () => {
-        cy.visit('https://automationexercise.com/');
+        cy.visit('/');
         cy.get('#slider').should('be.visible');
         cy.get('a[href="/products"]').click();
         cy.location('pathname').should('eq', '/products');
@@ -21,7 +21,7 @@ describe('Automation Exercise - Exercício para casa', () => {
     });
 
     it('Cenário 9 - Buscar produto', () => {
-        cy.visit('https://automationexercise.com/');
+        cy.visit('/');
         cy.get('#slider').should('be.visible');
         cy.get('a[href="/products"]').click();
         cy.contains('h2', 'All Products').should('be.visible');
@@ -35,7 +35,7 @@ describe('Automation Exercise - Exercício para casa', () => {
     });
 
     it('Cenário 10 - Inscrever e-mail na página inicial', () => {
-        cy.visit('https://automationexercise.com/');
+        cy.visit('/');
         cy.get('#slider').should('be.visible');
         cy.get('#footer').scrollIntoView();
         cy.contains('h2', 'Subscription').should('be.visible');
@@ -50,7 +50,7 @@ describe('Automation Exercise - Exercício para casa', () => {
         const email = `pgats-compra-15-${Date.now()}@example.com`;
         const senha = 'Teste123456';
 
-        cy.visit('https://automationexercise.com/');
+        cy.visit('/');
         cy.get('#slider').should('be.visible');
 
         cy.get('a[href="/login"]').click();
@@ -120,7 +120,7 @@ describe('Automation Exercise - Exercício para casa', () => {
         const email = `pgats-compra-16-${Date.now()}@example.com`;
         const senha = 'Teste123456';
 
-        cy.visit('https://automationexercise.com/');
+        cy.visit('/');
         cy.get('#slider').should('be.visible');
         // Preparação: criar uma conta independente e encerrar a sessão.
 

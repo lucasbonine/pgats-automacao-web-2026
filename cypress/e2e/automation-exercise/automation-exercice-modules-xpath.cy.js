@@ -4,7 +4,7 @@
 describe('Automation Exercise', () => {
 
     it('Cadastrar novo usuário com sucesso', () => {
-        cy.visit('https://automationexercise.com/');
+        cy.visit('/');
         cy.xpath('//a[@href="/login"]').click();
 
         cy.xpath('//input[@data-qa="signup-name"]').type('PGATS Aut');
@@ -47,7 +47,7 @@ describe('Automation Exercise', () => {
          */
 
         //ACT
-        cy.visit('https://automationexercise.com/login');
+        cy.visit('/login');
         cy.xpath('//input[@data-qa="login-email"]').type('pgats-aut-1792010891341@email.com');
         cy.xpath('//input[@data-qa="login-password"]').type('123456');
         cy.xpath('//button[@data-qa="login-button"]').click();
@@ -61,7 +61,7 @@ describe('Automation Exercise', () => {
 
     it('Efetuar Login de Usuário com email e senha incorretos', () => {
         //ACT
-        cy.visit('https://automationexercise.com/login');
+        cy.visit('/login');
         cy.xpath('//input[@data-qa="login-email"]').type('pgats-aut-1792010891341@email.com');
         cy.xpath('//input[@data-qa="login-password"]').type('654321');
         cy.xpath('//button[@data-qa="login-button"]').click();
@@ -78,7 +78,7 @@ describe('Automation Exercise', () => {
 
     it('Efetuar Logout', () => {
         //ACT
-        cy.visit('https://automationexercise.com/login');
+        cy.visit('/login');
         cy.xpath('//input[@data-qa="login-email"]').type('pgats-aut-1792010891341@email.com');
         cy.xpath('//input[@data-qa="login-password"]').type('123456');
         cy.xpath('//button[@data-qa="login-button"]').click();
@@ -91,7 +91,7 @@ describe('Automation Exercise', () => {
     });
 
     it('Tentar cadastrar usuário com e-mail já cadastrado', () => {
-        cy.visit('https://automationexercise.com/');
+        cy.visit('/');
         cy.xpath('//a[@href="/login"]').click();
 
         cy.xpath('//input[@data-qa="signup-name"]').type('PGATS Aut');
