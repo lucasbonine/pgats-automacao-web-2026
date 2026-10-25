@@ -17,6 +17,8 @@ jobs:
       - name: Instalando dependências
         run: npm ci
       - name: Executando os testes
+        env:
+          CYPRESS_BASE_URL: ${{ vars.CYPRESS_BASE_URL }}
         run: npx cypress run --spec "cypress/e2e/automation-exercise/automation-exercise-exercicio.cy.js,cypress/e2e/automation-exercise/automation-exercice-modules.cy.js"
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
