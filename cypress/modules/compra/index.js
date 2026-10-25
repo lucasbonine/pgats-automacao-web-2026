@@ -28,15 +28,8 @@ function verificarUsuarioLogado(nome) {
     cy.contains('a', 'Logged in as').should('be.visible').and('contain.text', nome);
 }
 
-function excluirConta() {
-    cy.get('a[href="/delete_account"]').click();
-    cy.get('[data-qa="account-deleted"]').should('be.visible').and('contain.text', 'Account Deleted!');
-    cy.get('[data-qa="continue-button"]').click();
-}
-
 module.exports = {
     preencherCadastroParaCompra,
     continuarAposCadastro,
-    verificarUsuarioLogado,
-    excluirConta
+    verificarUsuarioLogado
 };

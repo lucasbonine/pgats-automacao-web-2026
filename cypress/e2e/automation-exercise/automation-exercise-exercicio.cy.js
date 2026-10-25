@@ -57,7 +57,6 @@ describe('Automation Exercise - Exercício para casa', () => {
         checkout.preencherPagamento(nome);
         checkout.pagarEConfirmarPedido();
         checkout.verificarPedidoConfirmado();
-        compra.excluirConta();
     });
 
     it('Cenário 16 - Comprar com login antes do checkout', () => {
@@ -93,6 +92,5 @@ describe('Automation Exercise - Exercício para casa', () => {
         checkout.preencherPagamento(nome);
         checkout.pagarEConfirmarPedido();
         checkout.verificarPedidoConfirmado();
-        compra.excluirConta();
     });
 });
