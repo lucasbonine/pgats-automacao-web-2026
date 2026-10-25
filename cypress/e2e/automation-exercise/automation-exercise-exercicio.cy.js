@@ -1,4 +1,4 @@
-/// <reference types="cypress" />
+﻿/// <reference types="cypress" />
 
 const cadastro = require('../../modules/cadastro/index');
 const compra = require('../../modules/compra/index');
@@ -9,6 +9,8 @@ const inscricao = require('../../modules/inscricao/index');
 const carrinho = require('../../modules/carrinho/index');
 const checkout = require('../../modules/checkout/index');
 
+// Complemento para o trabalho final.
+// Os cenários 1,2,3,4 e 5 estão no arquivo automation-exercice-modules.cy.js
 describe('Automation Exercise - Exercício para casa', () => {
     it('Cenário 8 - Verificar produtos e detalhes do primeiro produto', () => {
         cy.visit('/');

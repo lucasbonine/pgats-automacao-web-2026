@@ -17,7 +17,7 @@ jobs:
       - name: Instalando dependências
         run: npm ci
       - name: Executando os testes
-        run: npx cypress run
+        run: npx cypress run --spec "cypress/e2e/automation-exercise/automation-exercise-exercicio.cy.js,cypress/e2e/automation-exercise/automation-exercice-modules.cy.js"
       - uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}
         with:
