@@ -7,7 +7,7 @@ const login = require('../../modules/login/index')
 
 describe('Automation Exercise', () => {
 
-    it('Cadastrar novo usuário com sucesso', () => {
+    it('Cenário 1 - Cadastrar novo usuário com sucesso', () => {
         cy.visit('/');
         cy.get('a[href*=login]').click();
         cadastro.iniciarCadastro('PGATS Aut', faker.internet.email());
@@ -15,7 +15,7 @@ describe('Automation Exercise', () => {
         cadastro.verificarSeCadastroFoiEfetuadoComSucesso();
     });
 
-    it('Efetuar Login de Usuário com email e senha corretos', () => {
+    it('Cenário 2 - Efetuar login com e-mail e senha corretos', () => {
         //ARRANGE
         /**
          * Ter uma conta para efeturar o Login
@@ -27,20 +27,20 @@ describe('Automation Exercise', () => {
         login.verificarSeLoginFoiEfetuadoComSucesso();
     });
 
-    it('Efetuar Login de Usuário com email e senha incorretos', () => {
+    it('Cenário 3 - Efetuar login com senha incorreta', () => {
         cy.visit('/login');
         login.preencherLogin('pgats-aut-1792010891341@email.com', '654321')
         login.verificarSeMensagemDeErroFoiExibidaNoLogin()
     });
 
-    it('Efetuar Logout', () => {
+    it('Cenário 4 - Efetuar logout', () => {
         cy.visit('/login');
         login.preencherLogin('pgats-aut-1792010891341@email.com', '123456')
         login.efetuarLogout();
         login.verificarSeOUsuaraioFoiDeslogado();
     });
 
-    it('Tentar cadastrar usuário com e-mail já cadastrado', () => {
+    it('Cenário 5 - Tentar cadastrar usuário com e-mail já cadastrado', () => {
         cy.visit('/');
         cy.get('a[href*=login]').click();
         cadastro.iniciarCadastro('PGATS Aut', 'pgats-aut-1792010891341@email.com')
